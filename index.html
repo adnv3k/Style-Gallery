@@ -7,19 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Page Header -->
     <header>
         <h1>Style Gallery</h1>
         <p>Explore artwork from the Art Institute of Chicago by style</p>
     </header>
     
+    <!-- Art Style Navigation -->
     <nav id="style-buttons">
-        <!-- Style buttons will go here -->
+        <button data-style="Impressionism" class="style-button">Impressionism</button>
+        <button data-style="Surrealism" class="style-button">Surrealism</button>
+        <button data-style="Cubism" class="style-button">Cubism</button>
+        <!-- Additional styles can be added here -->
     </nav>
     
+    <!-- Artwork Gallery Container 
+         This area will be populated by JavaScript when a style is selected -->
     <main id="gallery">
-        <!-- Artwork will be displayed here -->
+        <!-- Artwork cards will be dynamically inserted here -->
     </main>
     
+    <!-- Page Footer -->
     <footer>
         <p>Data provided by the Art Institute of Chicago API</p>
     </footer>
