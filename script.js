@@ -66,7 +66,7 @@ function makeButtonActive(activeButton) {
 function fetchArtworks(style) {
   // Get gallery element
   let gallery = document.getElementById('gallery');
-  gallery.innerHTML = "Loading...";
+  gallery.innerHTML = "<div class='loading'>Loading...</div>";
   
   // Build the API URL with the style
   let encodedStyle = encodeURIComponent(style);
@@ -84,18 +84,56 @@ function fetchArtworks(style) {
     })
     .then(data => {
       console.log("API returned:", data);
-      
-      // Simple placeholder display
-      if (data.data && data.data.length > 0) {
-        gallery.innerHTML = `Found ${data.data.length} artworks for ${style}`;
-      } else {
-        gallery.innerHTML = `No artworks found for ${style}`;
-      }
-      
-      // TODO: Create proper display function
+      displayArtworks(data.data);
     })
     .catch(error => {
       console.error("Error fetching artworks:", error);
-      gallery.innerHTML = "Sorry, something went wrong. Please try again.";
+      gallery.innerHTML = "<div class='error'>Sorry, something went wrong. Please try again.</div>";
     });
+}
+
+// Display the artworks in the gallery
+function displayArtworks(artworks) {
+  let gallery = document.getElementById('gallery');
+  
+  // Clear the gallery
+  gallery.innerHTML = "";
+  
+  // Check if we got any results
+  if (!artworks || artworks.length === 0) {
+    gallery.innerHTML = "<div class='no-results'>No artworks found for this style. Try another style!</div>";
+    return;
+  }
+  
+  // Loop through each artwork and create HTML for it
+  artworks.forEach(artwork => {
+    // Create container for this artwork
+    let artworkElement = document.createElement('div');
+    artworkElement.className = 'artwork';
+    
+    // Set up the image if we have one
+    let imageHTML = '';
+    if (artwork.image_id) {
+      imageHTML = `
+        <img class="artwork-image" 
+             src="${IMAGE_BASE_URL}/${artwork.image_id}/full/400,/0/default.jpg"
+             alt="${artwork.title}">
+      `;
+    } else {
+      imageHTML = `<div class="artwork-image no-image">No image available</div>`;
+    }
+    
+    // Add the artwork info
+    artworkElement.innerHTML = `
+      ${imageHTML}
+      <div class="artwork-info">
+        <h2 class="artwork-title">${artwork.title || 'Untitled'}</h2>
+        <p class="artwork-artist">${artwork.artist_display || 'Unknown Artist'}</p>
+        <p class="artwork-date">${artwork.date_display || 'Date unknown'}</p>
+      </div>
+    `;
+    
+    // Add this artwork to the gallery
+    gallery.appendChild(artworkElement);
+  });
 }
