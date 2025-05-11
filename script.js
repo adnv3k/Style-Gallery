@@ -66,11 +66,12 @@ function makeButtonActive(activeButton) {
 function fetchArtworks(style) {
   // Get gallery element
   let gallery = document.getElementById('gallery');
-  gallery.innerHTML = "<div class='loading'>Loading...</div>";
+  gallery.innerHTML = "<div class='loading'>Loading artworks for " + style + "...</div>";
+  
   
   // Build the API URL with the style
   let encodedStyle = encodeURIComponent(style);
-  let apiUrl = `${API_BASE_URL}/artworks/search?q=${encodedStyle}&limit=5&fields=id,title,artist_display,date_display,image_id`;
+  let apiUrl = `${API_BASE_URL}/artworks/search?q=${encodedStyle}&limit=10&fields=id,title,artist_display,date_display,image_id`;
   
   console.log("Fetching from:", apiUrl);
   
