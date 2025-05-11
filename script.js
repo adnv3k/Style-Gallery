@@ -1,6 +1,8 @@
 // Style Gallery - Button Interaction
-// This script handles the style button selection and active states
 
+// API URLs for Art Institute of Chicago
+const API_BASE_URL = 'https://api.artic.edu/api/v1';
+const IMAGE_BASE_URL = 'https://www.artic.edu/iiif/2';
 
 // Track which style button is currently active
 let currentStyle = "Impressionism";
@@ -11,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Set up click handlers for all style buttons
   setupButtons();
+  
+  // TODO: Load default style artworks
+  console.log("Will eventually load:", currentStyle);
 });
 
 function setupButtons() {
@@ -31,6 +36,9 @@ function setupButtons() {
         
         // Store the current style
         currentStyle = style;
+        
+        // TODO: Add API call here
+        console.log("Should fetch artworks for:", style);
       }
     });
   });
@@ -52,4 +60,10 @@ function makeButtonActive(activeButton) {
   
   // Add active class to the clicked button
   activeButton.classList.add("active");
+}
+
+// Basic placeholder for the fetch function
+function fetchArtworks(style) {
+  console.log("This will fetch artworks for:", style);
+  // TODO: Implement actual API call
 }
