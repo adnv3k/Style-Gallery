@@ -1,37 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Style Gallery - Art Institute of Chicago</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Page Header -->
     <header>
         <h1>Style Gallery</h1>
         <p>Explore artwork from the Art Institute of Chicago by style</p>
     </header>
-    
+
     <!-- Art Style Navigation -->
     <nav id="style-buttons">
         <button data-style="Impressionism" class="style-button">Impressionism</button>
         <button data-style="Surrealism" class="style-button">Surrealism</button>
         <button data-style="Cubism" class="style-button">Cubism</button>
+        <button data-style="Impressionism" class="style-button">Impressionism</button>
+        <button data-style="Surrealism" class="style-button">Surrealism</button>
+        <button data-style="Cubism" class="style-button">Cubism</button>
+        <button data-style="Abstract" class="style-button">Abstract</button>
+        <button data-style="Pop Art" class="style-button">Pop Art</button>
+        <button data-style="Renaissance" class="style-button">Renaissance</button>
+        <button data-style="Expressionism" class="style-button">Expressionism</button>
+        <button data-style="Folk Art" class="style-button">Folk Art</button>
+        <button data-style="Ijo" class="style-button">Ijo</button>
+        <button data-style="Baroque" class="style-button">Baroque</button>
+        <button data-style="Romanticism" class="style-button">Romanticism</button>
+        <button data-style="Neoclassicism" class="style-button">Neoclassicism</button>
+        <button data-style="Art Nouveau" class="style-button">Art Nouveau</button>
+        <button data-style="Art Deco" class="style-button">Art Deco</button>
+        <button data-style="Realism" class="style-button">Realism</button>
+        <button data-style="Minimalism" class="style-button">Minimalism</button>
+        <button data-style="Folk Art" class="style-button">Folk Art</button>
+        <button data-style="Ukiyo-e" class="style-button">Ukiyo-e</button>
+        <button data-style="Post-Impressionism" class="style-button">Post-Impressionism</button>
+        <button data-style="Modernism" class="style-button">Modernism</button>
+        <button data-style="Pointillism" class="style-button">Pointillism</button>
+        <button data-style="Symbolism" class="style-button">Symbolism</button>
+        <button data-style="Gothic" class="style-button">Gothic</button>
+        <button data-style="Rococo" class="style-button">Rococo</button>
+        <button data-style="Constructivism" class="style-button">Constructivism</button>
+        <button data-style="Dadaism" class="style-button">Dadaism</button>
+        <button data-style="Futurism" class="style-button">Futurism</button>
+        <button data-style="thiswillreturnanerror" class="style-button">thiswillreturnerror</button>
         <!-- Additional styles can be added here -->
     </nav>
-    
+
     <!-- Artwork Gallery Container 
          This area will be populated by JavaScript when a style is selected -->
     <main id="gallery">
         <!-- Artwork cards will be dynamically inserted here -->
     </main>
-    
+
     <!-- Page Footer -->
     <footer>
-        <p>Data provided by the Art Institute of Chicago API</p>
+        <p>Data provided by the
+            <a href="https://api.artic.edu/docs/">Art Institute of Chicago API</a>
+        </p>
+
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
