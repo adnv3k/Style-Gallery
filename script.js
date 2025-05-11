@@ -1,4 +1,4 @@
-// Style Gallery - Button Interaction
+// Script for handling style buttons in the gallery
 
 // API URLs for Art Institute of Chicago
 const API_BASE_URL = 'https://api.artic.edu/api/v1';
@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Set up click handlers for all style buttons
   setupButtons();
   
-  // TODO: Load default style artworks
-  console.log("Will eventually load:", currentStyle);
+  // Load default style artworks on page load
+  fetchArtworks(currentStyle);
 });
 
 function setupButtons() {
@@ -37,8 +37,8 @@ function setupButtons() {
         // Store the current style
         currentStyle = style;
         
-        // TODO: Add API call here
-        console.log("Should fetch artworks for:", style);
+        // Fetch artworks for this style
+        fetchArtworks(style);
       }
     });
   });
@@ -62,8 +62,40 @@ function makeButtonActive(activeButton) {
   activeButton.classList.add("active");
 }
 
-// Basic placeholder for the fetch function
+// Fetch artworks from the API
 function fetchArtworks(style) {
-  console.log("This will fetch artworks for:", style);
-  // TODO: Implement actual API call
+  // Get gallery element
+  let gallery = document.getElementById('gallery');
+  gallery.innerHTML = "Loading...";
+  
+  // Build the API URL with the style
+  let encodedStyle = encodeURIComponent(style);
+  let apiUrl = `${API_BASE_URL}/artworks/search?q=${encodedStyle}&limit=5&fields=id,title,artist_display,date_display,image_id`;
+  
+  console.log("Fetching from:", apiUrl);
+  
+  // Make the API request
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("API request failed");
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log("API returned:", data);
+      
+      // Simple placeholder display
+      if (data.data && data.data.length > 0) {
+        gallery.innerHTML = `Found ${data.data.length} artworks for ${style}`;
+      } else {
+        gallery.innerHTML = `No artworks found for ${style}`;
+      }
+      
+      // TODO: Create proper display function
+    })
+    .catch(error => {
+      console.error("Error fetching artworks:", error);
+      gallery.innerHTML = "Sorry, something went wrong. Please try again.";
+    });
 }
