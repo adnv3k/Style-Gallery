@@ -42,6 +42,7 @@ nav {
     display: flex;           /* Creates a horizontal layout */
     justify-content: center; /* Centers items horizontally */
     gap: 10px;               /* Space between buttons */
+    flex-wrap: wrap;         /* Allow buttons to wrap on smaller screens */
 }
 
 .style-button {
@@ -52,6 +53,32 @@ nav {
     cursor: pointer;         /* Shows hand cursor on hover */
     border-radius: 4px;
     font-size: 14px;
+    transition: all 0.2s ease; /* Smooth transition for all properties */
+}
+
+/* Button hover effect */
+.style-button:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+/* Active button state */
+.style-button.active {
+    background-color: #4a6fa5;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments for buttons */
+@media (max-width: 600px) {
+    nav {
+        gap: 8px;
+    }
+    
+    .style-button {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
 }
 
 /* Button hover effect */
